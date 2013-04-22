@@ -31,6 +31,10 @@
                 },
                 cursor: 'default'
             };
+            
+            var customDragOptions = ko.utils.unwrapObservable(valueAccessor().dragOptions);
+            for (var attrname in customDragOptions) { dragOptions[attrname] = customDragOptions[attrname]; }
+
             dragElement.draggable(dragOptions).disableSelection();
         },
         update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -51,6 +55,10 @@
                     ui.draggable.draggable("option", "revertDuration", 0);
                 }
             };
+            
+            var customDropOptions = ko.utils.unwrapObservable(valueAccessor().dropOptions);
+            for (var attrname in customDropOptions) { dropOptions[attrname] = customDropOptions[attrname]; }
+
             dropElement.droppable(dropOptions);
         },
         update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
